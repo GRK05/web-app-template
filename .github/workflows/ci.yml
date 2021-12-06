@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  ci-web:
+    name: CI-Web
+    uses: elanco/solops-appexcellence-github-actions/.github/workflows/web-ci.yml@master
+    with:
+      working-directory: ./src/web
+    secrets:
+      registry-read-token: ${{ secrets.GITHUB_TOKEN }}
+      repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
