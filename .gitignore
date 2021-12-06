@@ -39,6 +39,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+*/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -70,6 +71,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -81,6 +83,7 @@ typings/
 # Nuxt.js build / generate output
 .nuxt
 dist
+build
 
 # Gatsby files
 .cache/
@@ -102,3 +105,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Misc
+.DS_Store
+*.pem
