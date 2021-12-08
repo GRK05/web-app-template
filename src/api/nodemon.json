@@ -1,0 +1,12 @@
+{
+  "verbose": true,
+  "debug": false,
+  "exec": "node --inspect -r ts-node/register ./src/index.ts",
+  "ignore": [
+    ".vscode",
+    "node_modules"
+  ],
+  "watch": ["./src"],
+  "ext": "ts",
+  "inspect": true
+}

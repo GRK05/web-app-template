@@ -1,5 +1,5 @@
 {
-  "name": "solops-appexcellence-template-web-fern",
+  "name": "solops-appexcellence-template-web-fern-web",
   "private": true,
   "scripts": {
     "dev": "next dev",
