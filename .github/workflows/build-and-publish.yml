@@ -16,3 +16,4 @@ jobs:
       registry-write-token: ${{ secrets.REGISTRY_WRITE_TOKEN }}
       repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
       repository-write-token: ${{ secrets.REPOSITORY_WRITE_TOKEN }}
+      release-create-token: ${{ secrets.RELEASE_CREATE_TOKEN }}
