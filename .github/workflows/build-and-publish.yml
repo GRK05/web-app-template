@@ -10,7 +10,7 @@ jobs:
     name: Build & Publish
     uses: elanco/solops-appexcellence-github-actions/.github/workflows/web-buildandpublish-web-api.yml@master
     with:
-      default-bump-level: ''
+      default-bump-level: 'patch'
     secrets:
       registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
       registry-write-token: ${{ secrets.REGISTRY_WRITE_TOKEN }}
