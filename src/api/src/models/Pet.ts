@@ -1,3 +1,3 @@
 export type Pet = {
-    species: string;
-}
+  species: string;
+};

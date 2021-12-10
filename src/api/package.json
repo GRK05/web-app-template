@@ -1,11 +1,11 @@
 {
-  "name": "olops-appexcellence-template-web-fern-api",
+  "name": "solops-appexcellence-template-web-fern-api",
   "main": "./src/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "start": "nodemon --config nodemon.json",
     "test": "jest",
-    "lint": "eslint"
+    "lint": "eslint . --ext .js,.ts"
   },
   "dependencies": {
     "body-parser": "1.19.0",
@@ -28,7 +28,11 @@
     "@types/validator": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "eslint": "^8.4.1",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "jest": "^27.4.3",
     "nodemon": "2.0.15",
     "supertest": "^6.1.6",

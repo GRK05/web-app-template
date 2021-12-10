@@ -1,5 +1,6 @@
-import app from "./app";
+import application from './app';
 
-const PORT: string | number = process.env.PORT || 4000
+const PORT: string | number = process.env.PORT || 4000;
 
-app.listen(PORT, (): void => { console.log(`Server is listening on port ${PORT}`); });
+// eslint-disable-next-line no-console
+application.listen(PORT, (): void => { console.log(`Server is listening on port ${PORT}`); });
