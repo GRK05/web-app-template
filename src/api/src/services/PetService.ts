@@ -1,25 +1,11 @@
-import { Firestore } from '@google-cloud/firestore';
 import { Service } from 'typedi';
-import { env } from '../env';
 import { Pet } from '../models/Pet';
+import AbstractFirestoreService from './AbstractFirestoreService';
 
 @Service({ transient: true })
-class PetService {
-  private collectionName = 'pets';
-
-  private db: Firestore;
-
+class PetService extends AbstractFirestoreService {
   constructor() {
-    if (env.firestore.useApplicationDefaultCredentials) {
-      this.db = new Firestore({
-        projectId: env.firestore.projectId,
-      });
-    } else {
-      this.db = new Firestore({
-        projectId: env.firestore.projectId,
-        keyFilename: env.firestore.keyFilename,
-      });
-    }
+    super('pets');
   }
 
   public async getAll(): Promise<Pet[]> {
