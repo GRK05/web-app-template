@@ -27,6 +27,11 @@ export const env = {
     name: getEnvironmentVariable('APP_NAME'),
     version: getEnvironmentVariable('APP_VERSION'),
   },
+  firestore: {
+    projectId: getEnvironmentVariable('PROJECT_ID'),
+    useApplicationDefaultCredentials: toBool(getEnvironmentVariable('USE_APPLICATION_DEFAULT_CREDENTIALS')),
+    keyFilename: getEnvironmentVariable('KEY_FILENAME'),
+  },
   swagger: {
     enabled: toBool(getEnvironmentVariable('SWAGGER_ENABLED')),
     route: getEnvironmentVariable('SWAGGER_ROUTE'),

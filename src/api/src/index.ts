@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import application from './app';
 
 const PORT: string | number = process.env.PORT || 4000;
