@@ -11,16 +11,6 @@ class PetController {
   @Get()
   public find(): Promise<Pet[]> {
     return this.petService.getAll();
-
-    // const cat: Pet = {
-    //   species: 'Cat',
-    // };
-
-    // const dog: Pet = {
-    //   species: 'Dog',
-    // };
-
-    // return new Array<Pet>(cat, dog);
   }
 }
 
