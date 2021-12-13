@@ -2,14 +2,19 @@ import { Get, JsonController } from 'routing-controllers';
 import { Pet } from '../models/Pet';
 
 @JsonController('/pets')
-export class PetController {
+class PetController {
+  @Get()
+  public find(): Pet[] {
+    const cat: Pet = {
+      species: 'Cat',
+    };
 
-    @Get()
-    public find(): Pet[] {
-        const pet: Pet = {
-            species: 'Cat'
-        }
+    const dog: Pet = {
+      species: 'Dog',
+    };
 
-        return new Array<Pet>(pet);
-    }
+    return new Array<Pet>(cat, dog);
+  }
 }
+
+export default PetController;
