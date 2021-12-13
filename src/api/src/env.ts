@@ -4,7 +4,7 @@ import * as path from 'path';
 /**
  * Load .env file
  */
-dotenv.config({ path: path.join(process.cwd(), '.env') });
+dotenv.config({ path: path.join(process.cwd(), `.env${((process.env.NODE_ENV === 'test') ? '.tests' : '')}`) });
 
 export function getEnvironmentVariable(key: string): string {
   if (typeof process.env[key] === 'undefined') {
