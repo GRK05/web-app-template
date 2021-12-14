@@ -1,19 +1,16 @@
 import { Get, JsonController } from 'routing-controllers';
+import { Service } from 'typedi';
 import { Pet } from '../models/Pet';
+import PetRepository from '../repositories/PetRepository';
 
 @JsonController('/pets')
+@Service()
 class PetController {
+  constructor(private petService: PetRepository) {}
+
   @Get()
-  public find(): Pet[] {
-    const cat: Pet = {
-      species: 'Cat',
-    };
-
-    const dog: Pet = {
-      species: 'Dog',
-    };
-
-    return new Array<Pet>(cat, dog);
+  public find(): Promise<Pet[]> {
+    return this.petService.getAll();
   }
 }
 
