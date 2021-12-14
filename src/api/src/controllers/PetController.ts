@@ -1,12 +1,12 @@
 import { Get, JsonController } from 'routing-controllers';
 import { Service } from 'typedi';
 import { Pet } from '../models/Pet';
-import PetService from '../services/PetService';
+import PetRepository from '../repositories/PetRepository';
 
 @JsonController('/pets')
 @Service()
 class PetController {
-  constructor(private petService: PetService) {}
+  constructor(private petService: PetRepository) {}
 
   @Get()
   public find(): Promise<Pet[]> {

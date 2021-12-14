@@ -1,9 +1,9 @@
 import { Service } from 'typedi';
 import { Pet } from '../models/Pet';
-import AbstractFirestoreService from './AbstractFirestoreService';
+import AbstractFirestoreRepository from './AbstractFirestoreRepository';
 
 @Service({ transient: true })
-class PetService extends AbstractFirestoreService {
+class PetRepository extends AbstractFirestoreRepository {
   constructor() {
     super('pets');
   }
@@ -16,4 +16,4 @@ class PetService extends AbstractFirestoreService {
   }
 }
 
-export default PetService;
+export default PetRepository;

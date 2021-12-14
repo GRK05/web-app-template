@@ -1,7 +1,7 @@
 import { Firestore } from '@google-cloud/firestore';
 import { env } from '../env';
 
-abstract class AbstractFirestoreService {
+abstract class AbstractFirestoreRepository {
   public collectionName: string;
 
   public db: Firestore;
@@ -22,4 +22,4 @@ abstract class AbstractFirestoreService {
   }
 }
 
-export default AbstractFirestoreService;
+export default AbstractFirestoreRepository;
