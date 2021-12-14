@@ -1,3 +1,7 @@
-output "cloud_run_service" {
+output "region" {
+  value = google_cloud_run_service.cloud_run_service.region
+}
+
+output "name" {
   value = google_cloud_run_service.cloud_run_service.name
 }

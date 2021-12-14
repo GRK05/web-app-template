@@ -3,9 +3,9 @@ variable "project_id" {
   description = "Project ID to land the pattern deployment"
 }
 
-variable "apps" {
-  type        = map(any)
-  description = "List of apps and properties to be deployed"
+variable "is_dev" {
+  type        = bool
+  description = "Denotes if the environment is dev or not"
 }
 
 variable "url_map_default" {
@@ -16,7 +16,22 @@ variable "url_map" {
   type = map(any)
 }
 
-
 variable "domain" {
+  type = string
+}
+
+variable "dev_web_image_tag" {
+  type = string
+}
+
+variable "dev_api_image_tag" {
+  type = string
+}
+
+variable "prod_web_image_tag" {
+  type = string
+}
+
+variable "prod_api_image_tag" {
   type = string
 }

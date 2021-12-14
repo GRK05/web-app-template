@@ -94,14 +94,14 @@ resource "google_compute_url_map" "https_redirect" {
 
 resource "google_compute_region_network_endpoint_group" "serverless_neg" {
   provider = google-beta
-  for_each = var.apps
+  for_each = var.cloud_run_services
 
   project               = var.project_id
   name                  = "${each.key}-neg"
   network_endpoint_type = "SERVERLESS"
   region                = each.value.region
   cloud_run {
-    service = var.cloud_run_services[each.key].cloud_run_service
+    service = each.value.name
   }
 }
 
