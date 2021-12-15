@@ -1,0 +1,23 @@
+name: Initial Terraform Provisioning
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target deployment environment"
+        required: true
+  
+jobs:
+  terraform-provisioning:
+    name: Terraform Provisioning
+    uses: elanco/solops-appexcellence-github-actions/.github/workflows/terraform-initial-provisioning.yml@feature/ado-3035
+    with:
+      default-bump-level: 'patch'
+      environment: ${{ inputs.environment }}
+    secrets:
+      registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
+      registry-write-token: ${{ secrets.REGISTRY_WRITE_TOKEN }}
+      repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
+      repository-write-token: ${{ secrets.REPOSITORY_WRITE_TOKEN }}
+      release-create-token: ${{ secrets.RELEASE_CREATE_TOKEN }}
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
