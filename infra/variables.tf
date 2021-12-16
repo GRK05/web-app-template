@@ -3,6 +3,10 @@ variable "project_id" {
   description = "Project ID to land the pattern deployment"
 }
 
+variable "container_registry_project_id" {
+  type = string
+}
+
 variable "is_dev" {
   type        = bool
   description = "Denotes if the environment is dev or not"

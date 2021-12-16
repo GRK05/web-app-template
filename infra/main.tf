@@ -14,23 +14,25 @@ resource "google_container_registry" "registry" {
 module "web-us-east-service" {
   source = "./modules/cloud_run_service"
 
-  project_id             = var.project_id
-  name                   = "web-us-east"
-  region                 = "us-east4"
-  needs_firestore_access = false
-  container_url          = "gcr.io/web-pattern-prod-env-01/web:${var.web_image_tag}"
-  container_port         = "8080"
+  project_id                    = var.project_id
+  name                          = "web-us-east"
+  region                        = "us-east4"
+  needs_firestore_access        = false
+  container_url                 = "gcr.io/${var.container_registry_project_id}/web:${var.web_image_tag}"
+  container_port                = "8080"
+  container_registry_project_id = var.container_registry_project_id
 }
 
 module "api-us-east-service" {
   source = "./modules/cloud_run_service"
 
-  project_id             = var.project_id
-  name                   = "api-us-east"
-  region                 = "us-east4"
-  needs_firestore_access = true
-  container_url          = "gcr.io/web-pattern-prod-env-01/api:${var.api_image_tag}"
-  container_port         = "8080"
+  project_id                    = var.project_id
+  name                          = "api-us-east"
+  region                        = "us-east4"
+  needs_firestore_access        = true
+  container_url                 = "gcr.io/${var.container_registry_project_id}/api:${var.api_image_tag}"
+  container_port                = "8080"
+  container_registry_project_id = var.container_registry_project_id
 }
 
 /* -------------------------------------------------------------------------- */

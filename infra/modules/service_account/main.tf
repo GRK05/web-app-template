@@ -6,6 +6,14 @@ resource "google_service_account" "service_account" {
   display_name = "${var.service_name}-sa"
 }
 
+/* ------------ Add storage object viewer for container registry ------------ */
+
+resource "google_project_iam_member" "container_binding" {
+  project = var.container_registry_project_id
+  role    = "roles/storage.objectViewer"
+  member  = "serviceAccount:${google_service_account.service_account.email}"
+}
+
 /* -------------------- Add Firestore Access if Required -------------------- */
 
 resource "google_project_iam_member" "policy_binding" {

@@ -5,9 +5,10 @@
 module "service_account" {
   source = "../service_account"
 
-  service_name           = var.name
-  needs_firestore_access = var.needs_firestore_access
-  project                = var.project_id
+  service_name                  = var.name
+  needs_firestore_access        = var.needs_firestore_access
+  project                       = var.project_id
+  container_registry_project_id = var.container_registry_project_id
 }
 
 /* -------------------------------------------------------------------------- */
