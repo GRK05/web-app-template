@@ -1,6 +1,9 @@
 {
-  "prod_api_image_tag": "var-QpgjrBAdARYKnosa",
-  "prod_web_image_tag": "var-HxfcJz2zPuvHt4kD",
-  "dev_api_image_tag": "var-WhYzDGGHMdkfmoKn",
-  "dev_web_image_tag": "var-EaS3jAntL5yMC737"
+  "prod": {
+    "workspace_id": "ws-U9e6fDmnQB5Bwuh6",
+    "vars": {
+      "web": "var-18s4SAc7RKL5rCG4",
+      "api": "var-F5aevFosaFrpaLkB"
+    }
+  }
 }
