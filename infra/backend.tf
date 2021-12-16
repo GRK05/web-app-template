@@ -3,7 +3,7 @@ terraform {
     organization = "elanco_animal_health"
 
     workspaces {
-      name = "solops-appexcellence-template-web-fern"
+      prefix = "web-app-template-"
     }
   }
 }

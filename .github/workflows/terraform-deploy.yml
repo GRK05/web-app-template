@@ -1,22 +1,22 @@
-name: Terraform Deploy
+# name: Terraform Deploy
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - master
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - master
   
-jobs:
-  build-and-publish:
-    name: Build & Publish
-    uses: elanco/solops-appexcellence-github-actions/.github/workflows/terraform-deploy.yml@master
-    with:
-      google-registry-project-id: "web-pattern-prod-env-01"
-      environment: dev
-      terraform-workspace-id: "ws-yL2xTe648kB9mz6Z"
-    secrets:
-      registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
-      registry-write-token: ${{ secrets.REGISTRY_WRITE_TOKEN }}
-      repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
-      repository-write-token: ${{ secrets.REPOSITORY_WRITE_TOKEN }}
-      release-create-token: ${{ secrets.RELEASE_CREATE_TOKEN }}
+# jobs:
+#   build-and-publish:
+#     name: Build & Publish
+#     uses: elanco/solops-appexcellence-github-actions/.github/workflows/terraform-deploy.yml@master
+#     with:
+#       google-registry-project-id: "web-pattern-prod-env-01"
+#       environment: dev
+#       terraform-workspace-id: "ws-yL2xTe648kB9mz6Z"
+#     secrets:
+#       registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
+#       registry-write-token: ${{ secrets.REGISTRY_WRITE_TOKEN }}
+#       repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
+#       repository-write-token: ${{ secrets.REPOSITORY_WRITE_TOKEN }}
+#       release-create-token: ${{ secrets.RELEASE_CREATE_TOKEN }}

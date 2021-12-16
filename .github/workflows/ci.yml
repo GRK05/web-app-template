@@ -1,23 +1,23 @@
-name: CI
+# name: CI
 
-on:
-  pull_request:
-  workflow_dispatch:
+# on:
+#   pull_request:
+#   workflow_dispatch:
   
-jobs:
-  ci-web:
-    name: CI-Web
-    uses: elanco/solops-appexcellence-github-actions/.github/workflows/web-ci.yml@master
-    with:
-      working-directory: ./src/web
-    secrets:
-      registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
-      repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
-  ci-api:
-    name: CI-API
-    uses: elanco/solops-appexcellence-github-actions/.github/workflows/web-ci.yml@master
-    with:
-      working-directory: ./src/api
-    secrets:
-      registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
-      repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
+# jobs:
+#   ci-web:
+#     name: CI-Web
+#     uses: elanco/solops-appexcellence-github-actions/.github/workflows/web-ci.yml@master
+#     with:
+#       working-directory: ./src/web
+#     secrets:
+#       registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
+#       repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
+#   ci-api:
+#     name: CI-API
+#     uses: elanco/solops-appexcellence-github-actions/.github/workflows/web-ci.yml@master
+#     with:
+#       working-directory: ./src/api
+#     secrets:
+#       registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
+#       repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
