@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
           echo "::set-output name=tfc_workspace::$(cat infra/vars.map.json | jq -r '.prod.workspace_id')"
-          echo "::set-output name=tfc_var_id::$(cat infra/vars.map.json | jq -r '.prod.vars.${{ matrix.image }}')""
+          echo "::set-output name=tfc_var_id::$(cat infra/vars.map.json | jq -r '.prod.vars.${{ matrix.image }}')"
     
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@master
