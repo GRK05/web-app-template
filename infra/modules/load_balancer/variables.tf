@@ -6,10 +6,6 @@ variable "domain" {
   type = string
 }
 
-variable "apps" {
-  type = map(any)
-}
-
 variable "cloud_run_services" {
   type = map(any)
 }
