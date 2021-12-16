@@ -1,26 +1,3 @@
-# name: Initial Terraform Provisioning
-
-# on:
-#   workflow_dispatch:
-#     inputs:
-#       environment:
-#         description: "Target deployment environment"
-#         required: true
-  
-# jobs:
-#   terraform-provisioning:
-#     name: Terraform Provisioning
-#     uses: elanco/solops-appexcellence-github-actions/.github/workflows/terraform-initial-provisioning.yml@feature/ado-3035
-#     with:
-#       default-bump-level: 'patch'
-#       environment: ${{ inputs.environment }}
-#     secrets:
-#       registry-read-token: ${{ secrets.REGISTRY_READ_TOKEN }}
-#       registry-write-token: ${{ secrets.REGISTRY_WRITE_TOKEN }}
-#       repository-read-token: ${{ secrets.REPOSITORY_READ_TOKEN }}
-#       repository-write-token: ${{ secrets.REPOSITORY_WRITE_TOKEN }}
-#       release-create-token: ${{ secrets.RELEASE_CREATE_TOKEN }}
-#       TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
 name: Terraform Provisioning
 
 on:
@@ -35,7 +12,7 @@ jobs:
     name: Terraform Provisioning
     runs-on: ubuntu-latest
     env:
-      TF_WORKSPACE: ${{ inputs.environment }}
+      TF_WORKSPACE: ${{ github.event.inputs.environment }}
     steps:
       - name: Checkout 
         uses: actions/checkout@v2
@@ -44,6 +21,10 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      
+      - name: Variables File
+        shell: bash
+        run: cp infra/envs/${{ github.events.inputs.environment }}.terraform.tfvars infra/terraform.auto.tfvars
 
       - name: "Initialize Terraform"
         shell: bash
