@@ -9,7 +9,7 @@ jobs:
   publish-and-deploy:
     runs-on: ubuntu-latest
     env:
-      TF_WORKSPACE: prod
+      TF_WORKSPACE: dev
     strategy:
       max-parallel: 1
       matrix:
@@ -27,8 +27,8 @@ jobs:
         shell: bash
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-          echo "::set-output name=tfc_workspace::$(cat infra/vars.map.json | jq -r '.prod.workspace_id')"
-          echo "::set-output name=tfc_var_id::$(cat infra/vars.map.json | jq -r '.prod.vars.${{ matrix.image }}')"
+          echo "::set-output name=tfc_workspace::$(cat infra/vars.map.json | jq -r '.dev.workspace_id')"
+          echo "::set-output name=tfc_var_id::$(cat infra/vars.map.json | jq -r '.dev.vars.${{ matrix.image }}')"
     
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@master
@@ -55,7 +55,7 @@ jobs:
       
       - name: Variables File
         shell: bash
-        run: cp infra/envs/prod.terraform.tfvars infra/terraform.auto.tfvars
+        run: cp infra/envs/dev.terraform.tfvars infra/terraform.auto.tfvars
 
       - name: "Initialize Terraform"
         shell: bash

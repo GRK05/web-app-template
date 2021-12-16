@@ -5,5 +5,12 @@
       "web": "var-18s4SAc7RKL5rCG4",
       "api": "var-F5aevFosaFrpaLkB"
     }
+  },
+  "dev": {
+    "workspace_id": "ws-61BBX2tBz88T1oQ2",
+    "vars": {
+      "web": "var-RBSJTr4qfQ14FdYV",
+      "api": "var-Jnvg39AjWXdFYhH1"
+    }
   }
 }
