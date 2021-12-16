@@ -8,6 +8,8 @@ on:
 jobs:
   publish-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      TF_WORKSPACE: prod
     strategy:
       max-parallel: 1
       matrix:
@@ -44,7 +46,7 @@ jobs:
       - name: "Update Terraform Cloud variable"
         shell: bash
         run: |
-          curl --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" -d '{ "data": { "type": "vars", "id": "${{ steps.vars.outputs.tfc_var_id }}", "attributes": { "value": "${{ inputs.image_tag }}" } }' -X PATCH https://app.terraform.io/api/v2/workspaces/${{ steps.vars.outputs.tfc_workspace }}/vars/${{ steps.vars.outputs.tfc_var_id }}
+          curl --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" -d '{ "data": { "type": "vars", "id": "${{ steps.vars.outputs.tfc_var_id }}", "attributes": { "value": "${{ steps.vars.outputs.sha_short }}" } }' -X PATCH https://app.terraform.io/api/v2/workspaces/${{ steps.vars.outputs.tfc_workspace }}/vars/${{ steps.vars.outputs.tfc_var_id }}
 
       - name: "Connect to Terraform Cloud"
         uses: hashicorp/setup-terraform@v1
