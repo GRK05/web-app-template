@@ -1,0 +1,67 @@
+name: Prod Terraform Deployment
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      TF_WORKSPACE: prod
+    strategy:
+      max-parallel: 1
+      matrix:
+        include:
+          - path: src/web_sam
+            image: web
+          - path: src/api_sam
+            image: api
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout
+
+      - name: Declare variables
+        id: vars
+        shell: bash
+        run: |
+          echo "::set-output name=tfc_workspace::$(cat infra/vars.map.json | jq -r '.prod.workspace_id')"
+          echo "::set-output name=tfc_var_id::$(cat infra/vars.map.json | jq -r '.prod.vars.${{ matrix.image }}')"
+    
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@master
+    
+      - name: Push to GCR
+        uses: RafikFarhad/push-to-gcr-github-action@v4
+        with:
+          gcloud_service_key: ${{ secrets.GOOGLE_ENCODED_CREDENTIALS }}
+          registry: gcr.io
+          project_id: web-pattern-prod-env-01
+          image_name: ${{ matrix.image }}
+          context: ${{ matrix.path }}
+          image_tag: ${{ github.event.release.tag_name }}
+
+      - name: "Update Terraform Cloud variable"
+        shell: bash
+        run: |
+          curl --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" --header "Content-Type: application/vnd.api+json" -d '{ "data": { "type": "vars", "id": "${{ steps.vars.outputs.tfc_var_id }}", "attributes": { "value": "${{ github.event.release.tag_name }}" } } }' -X PATCH https://app.terraform.io/api/v2/workspaces/${{ steps.vars.outputs.tfc_workspace }}/vars/${{ steps.vars.outputs.tfc_var_id }}
+
+      - name: "Connect to Terraform Cloud"
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      
+      - name: Variables File
+        shell: bash
+        run: cp infra/envs/prod.terraform.tfvars infra/terraform.auto.tfvars
+
+      - name: "Initialize Terraform"
+        shell: bash
+        run: terraform init
+        working-directory: infra
+    
+      - name: "Terraform Apply"
+        shell: bash
+        run: terraform apply -auto-approve
+        working-directory: infra

@@ -1,4 +1,4 @@
-name: Continuous Terraform Deployment
+name: Dev Terraform Deployment
 
 on:
   push:
