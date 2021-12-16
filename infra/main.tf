@@ -18,7 +18,7 @@ module "web_us_east_service" {
   name                   = "web-us-east"
   region                 = "us-east4"
   needs_firestore_access = false
-  container_url          = "gcr.io/web-pattern-prod-env-01/web:${var.is_dev ? var.dev_web_image_tag : var.prod_web_image_tag}"
+  container_url          = "gcr.io/web-pattern-prod-env-01/web:${var.web_image_tag}"
   container_port         = "8080"
 }
 
@@ -29,7 +29,7 @@ module "api_us_east_service" {
   name                   = "api-us-east"
   region                 = "us-east4"
   needs_firestore_access = true
-  container_url          = "gcr.io/web-pattern-prod-env-01/api:${var.is_dev ? var.dev_api_image_tag : var.prod_api_image_tag}"
+  container_url          = "gcr.io/web-pattern-prod-env-01/api:${var.api_image_tag}"
   container_port         = "8080"
 }
 

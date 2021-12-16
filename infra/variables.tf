@@ -20,18 +20,10 @@ variable "domain" {
   type = string
 }
 
-variable "dev_web_image_tag" {
+variable "web_image_tag" {
   type = string
 }
 
-variable "dev_api_image_tag" {
-  type = string
-}
-
-variable "prod_web_image_tag" {
-  type = string
-}
-
-variable "prod_api_image_tag" {
+variable "api_image_tag" {
   type = string
 }
