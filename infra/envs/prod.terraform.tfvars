@@ -1,6 +1,7 @@
-project_id = "web-pattern-prod-env-01"
-domain     = "fern-template.elancosolutions.com"
-is_dev     = false
+project_id                    = "web-pattern-prod-env-01"
+container_registry_project_id = "web-pattern-prod-env-01"
+domain                        = "fern-template.elancosolutions.com"
+is_dev                        = false
 
 url_map_default = [
   "web-us-east-service"
