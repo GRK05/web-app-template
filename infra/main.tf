@@ -11,7 +11,7 @@ resource "google_container_registry" "registry" {
 /*                        Create the Cloud Run Services                       */
 /* -------------------------------------------------------------------------- */
 
-module "web_us_east_service" {
+module "web-us-east-service" {
   source = "./modules/cloud_run_service"
 
   project_id             = var.project_id
@@ -22,7 +22,7 @@ module "web_us_east_service" {
   container_port         = "8080"
 }
 
-module "api_us_east_service" {
+module "api-us-east-service" {
   source = "./modules/cloud_run_service"
 
   project_id             = var.project_id
@@ -43,8 +43,8 @@ module "global_load_balancer" {
   project_id = var.project_id
   domain     = var.domain
   cloud_run_services = {
-    "web_us_east_service" = module.web_us_east_service,
-    "api_us_east_service" = module.api_us_east_service
+    "web-us-east-service" = module.web-us-east-service,
+    "api-us-east-service" = module.api-us-east-service
   }
   url_map_default = var.url_map_default
   url_map         = var.url_map
